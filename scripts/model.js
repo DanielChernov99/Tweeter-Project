@@ -44,6 +44,11 @@ const Tweeter = function (){
 
     const addComment = function(postID, text){
         const post = posts.find(p => p.id ===postID)
+        if (!post) {
+            const error = new Error("no such post with this id") 
+            error.code = "NONEXISTING_POST";  
+            throw error 
+        }
         const newComment = {
             id:`c${++commentIdCounter}`,
             text:text
@@ -54,7 +59,15 @@ const Tweeter = function (){
     const removeComment = function(postID, commentID){
         const post = posts.find(p => p.id === postID)
         if (!post) {
-            throw new Error("No such post");    
+            const error = new Error("no such post with this id") 
+            error.code = "NONEXISTING_POST";  
+            throw error 
+        }
+        const comment = post.comments.find(u => u.id === commentID)
+        if (!comment) {
+            const error = new Error("no such comment with this id")
+            error.code = "NONEXISTING_COMMENT"
+            throw error
         }
         post.comments = post.comments.filter(comment => {
             return comment.id !== commentID
@@ -70,22 +83,5 @@ const Tweeter = function (){
     }
     
 }
-
-
-// testing
-const tweeter = Tweeter()
-
-
-
-tweeter.addPost("This is my own post!");
-tweeter.removePost("p1");
-// Test adding comments
-tweeter.addComment("p3", "Damn straight it is!");
-tweeter.addComment("p2", "Second the best!");
-console.log(tweeter.getPosts());
-console.log("################################################################")
-
-
-
 
 export default Tweeter
