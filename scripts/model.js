@@ -1,6 +1,6 @@
 const Tweeter = function (){
-    postIdCounter = 2
-    commentIdCounter = 6 
+    let postIdCounter = 2
+    let commentIdCounter = 6 
     let posts =[
         {
             text: "First post!",
@@ -22,7 +22,34 @@ const Tweeter = function (){
         }
     ]
 
+    const getPosts = function(){
 
+    }
+
+    const addPost = function(text){
+
+    }
+
+    const removePost = function(postID){
+
+    }
+
+    const addComment = function(postID, text){
+
+    }
+
+    const removeComment = function(postID, commentID){
+
+    }
+
+    return {
+        getPosts,
+        addPost,
+        removePost,
+        addComment,
+        removeComment
+    }
     
 }
 
+export default Tweeter
