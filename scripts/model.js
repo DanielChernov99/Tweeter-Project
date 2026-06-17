@@ -30,9 +30,10 @@ const Tweeter = function (){
         const currentLength = posts.length
         const newPost ={
             text:text,
-            id:`p${postIdCounter++}`,
+            id:`p${++postIdCounter}`,
             comments:[]
         }
+        posts.push(newPost)
     }
 
     const removePost = function(postID){
@@ -40,7 +41,6 @@ const Tweeter = function (){
             return post.id !== postID
         })
         posts = updatedPosts
-        postIdCounter--
     }
 
     const addComment = function(postID, text){
@@ -60,5 +60,16 @@ const Tweeter = function (){
     }
     
 }
+
+
+// testing
+const tweeter = Tweeter()
+
+tweeter.addPost("This is my own post!")
+console.log(tweeter.getPosts())
+tweeter.removePost("p1")
+console.log(tweeter.getPosts())
+
+
 
 export default Tweeter
