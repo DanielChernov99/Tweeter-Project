@@ -27,7 +27,6 @@ const Tweeter = function (){
     }
 
     const addPost = function(text){
-        const currentLength = posts.length
         const newPost ={
             text:text,
             id:`p${++postIdCounter}`,
@@ -46,13 +45,20 @@ const Tweeter = function (){
     const addComment = function(postID, text){
         const post = posts.find(p => p.id ===postID)
         const newComment = {
-            id:`c${++commentIdCounter}`, 
+            id:`c${++commentIdCounter}`,
+            text:text
         }
         post.comments.push(newComment)
     }
 
     const removeComment = function(postID, commentID){
-
+        const post = posts.find(p => p.id === postID)
+        if (!post) {
+            throw new Error("No such post");    
+        }
+        post.comments = post.comments.filter(comment => {
+            return comment.id !== commentID
+        })
     }
 
     return {
