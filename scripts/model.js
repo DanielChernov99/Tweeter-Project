@@ -23,11 +23,16 @@ const Tweeter = function (){
     ]
 
     const getPosts = function(){
-
+        return posts
     }
 
     const addPost = function(text){
-
+        const currentLength = posts.length
+        const newPost ={
+            text:text,
+            id:`p${currentLength + 1}`,
+            comments:[]
+        }
     }
 
     const removePost = function(postID){
