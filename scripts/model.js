@@ -44,7 +44,11 @@ const Tweeter = function (){
     }
 
     const addComment = function(postID, text){
-
+        const post = posts.find(p => p.id ===postID)
+        const newComment = {
+            id:`c${++commentIdCounter}`, 
+        }
+        post.comments.push(newComment)
     }
 
     const removeComment = function(postID, commentID){
@@ -65,10 +69,16 @@ const Tweeter = function (){
 // testing
 const tweeter = Tweeter()
 
-tweeter.addPost("This is my own post!")
-console.log(tweeter.getPosts())
-tweeter.removePost("p1")
-console.log(tweeter.getPosts())
+
+
+tweeter.addPost("This is my own post!");
+tweeter.removePost("p1");
+// Test adding comments
+tweeter.addComment("p3", "Damn straight it is!");
+tweeter.addComment("p2", "Second the best!");
+console.log(tweeter.getPosts());
+console.log("################################################################")
+
 
 
 
