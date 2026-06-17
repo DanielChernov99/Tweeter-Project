@@ -30,13 +30,17 @@ const Tweeter = function (){
         const currentLength = posts.length
         const newPost ={
             text:text,
-            id:`p${currentLength + 1}`,
+            id:`p${postIdCounter++}`,
             comments:[]
         }
     }
 
     const removePost = function(postID){
-
+        const updatedPosts = posts.filter(post => {
+            return post.id !== postID
+        })
+        posts = updatedPosts
+        postIdCounter--
     }
 
     const addComment = function(postID, text){
