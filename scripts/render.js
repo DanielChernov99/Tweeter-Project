@@ -57,10 +57,36 @@ const Renderer = function () {
     }
 
     const createPostElement = function(post) {
+        const postElement = document.createElement("div")
+        postElement.classList.add("post")
+        postElement.dataset.id = post.id
+
+        const postText = document.createElement("div")
+        postText.classList.add("post-text")
+        postText.textContent = post.text
+
+        const deletePostButton = createDeletePostButton(post.id)
+        const commentsDiv = createCommentsDiv(post.comments)
+        const commentInputRow = createCommentInputRow()
+
+        postElement.append(
+            postText,
+            deletePostButton,
+            commentsDiv,
+            commentInputRow
+        )
+
+        return postElement
     }
 
     const renderPosts = function(posts) {
         const postContainer = document.querySelector(".posts-container")
+        postContainer.innerHTML = ""
+
+        posts.forEach(post => {
+            const postElement = createPostElement(post)
+            postContainer.appendChild(postElement)
+        })
     }
 
     return {
