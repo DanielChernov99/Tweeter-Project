@@ -47,6 +47,7 @@ const Renderer = function () {
         const inputComment = document.createElement("input")
         inputComment.placeholder = "Got something to say?"
         inputComment.classList.add("comment-input")
+        inputComment.name = "comment"
 
         const btnComment = document.createElement("button")
         btnComment.textContent = "Comment"
