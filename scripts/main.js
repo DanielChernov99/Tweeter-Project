@@ -4,4 +4,12 @@ import Renderer from "./render.js"
 const tweeter = Tweeter()
 const renderer = Renderer()
 
-renderer.renderPosts(tweeter.getPosts())
+const inputTwit = document.querySelector("#inputTweet")
+const btnTwit = document.querySelector("#btnTwit")
+const postContainer = document.querySelector(".posts-container")
+
+const render = function () {
+    renderer.renderPosts(tweeter.getPosts())
+}
+render()
+
