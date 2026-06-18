@@ -8,16 +8,25 @@ const Renderer = function () {
     const createCommentElement = function(comment) {
     }
 
-    const createCommentsSection = function(comments) {
+    const createCommentsDiv = function(comments) {
+        const commentDiv = document.createElement("div")
+        commentDiv.classList.add("comments-container")
+        comments.forEach(comment => {
+            const commentElement = createCommentElement(comment)
+            commentDiv.appendChild(commentElement)
+        });
+        return commentDiv
     }
 
     const createCommentInputRow = function() {
         const commentRow = document.createElement("div")
+        commentRow.classList.add("comment-row")
+
         const inputComment = document.createElement("input")
-        const btnComment = document.createElement("button")
         inputComment.placeholder = "Got something to say?"
         inputComment.classList.add("comment-input")
 
+        const btnComment = document.createElement("button")
         btnComment.textContent = "Comment"
         btnComment.classList.add("comment-button")
 
