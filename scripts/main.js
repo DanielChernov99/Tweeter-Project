@@ -42,6 +42,7 @@ postContainer.addEventListener("click",function(e){
         if(inputValue === "") return
 
         tweeter.addComment(postID,inputValue)
+        commentInput.value = ""
         render()
     }
 })
