@@ -2,7 +2,13 @@
 const Renderer = function () {
 
     const createDeletePostButton = function(postId) {
+        const deleteButton = document.createElement("button")
 
+        deleteButton.textContent = "Delete Post"
+        deleteButton.classList.add("delete-button")
+        deleteButton.dataset.id = postId
+
+        return deleteButton
     }
 
     const createCommentElement = function(comment) {
