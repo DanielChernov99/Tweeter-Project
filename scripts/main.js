@@ -46,3 +46,16 @@ postContainer.addEventListener("click",function(e){
     }
 })
 
+postContainer.addEventListener("click",function(e){
+    if(e.target.matches(".delete-comment-button")){
+        const commentElemnt = e.target.closest(".comment-container")
+        const commentID = commentElemnt.dataset.id
+
+        const postElement = e.target.closest(".post")
+        const postID = postElement.dataset.id
+
+        tweeter.removeComment(postID,commentID)
+        render()
+    }
+})
+
