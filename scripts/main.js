@@ -13,3 +13,11 @@ const render = function () {
 }
 render()
 
+btnTwit.addEventListener("click",() =>{
+    const inputValue = inputTwit.value.trim()
+    if(inputValue === "") return
+    tweeter.addPost(inputValue)
+    inputTwit.value = ""
+    render()
+})
+
