@@ -21,3 +21,12 @@ btnTwit.addEventListener("click",() =>{
     render()
 })
 
+postContainer.addEventListener("click", function(e){
+    if(e.target.matches(".delete-button")){
+        const postElement = e.target.closest(".post")
+        const postID = postElement.dataset.id
+        tweeter.removePost(postID)
+        render()
+    }
+})
+
