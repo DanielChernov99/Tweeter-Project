@@ -1,7 +1,7 @@
 const Tweeter = function (){
-    let postIdCounter = 2
-    let commentIdCounter = 6 
-    let posts =[
+    let _postIdCounter = 2
+    let _commentIdCounter = 6 
+    let _posts =[
         {
             text: "First post!",
             id: "p1",
@@ -23,41 +23,41 @@ const Tweeter = function (){
     ]
 
     const getPosts = function(){
-        return posts
+        return _posts
     }
 
     const addPost = function(text){
         const newPost ={
             text:text,
-            id:`p${++postIdCounter}`,
+            id:`p${++_postIdCounter}`,
             comments:[]
         }
-        posts.push(newPost)
+        _posts.push(newPost)
     }
 
     const removePost = function(postID){
-        const updatedPosts = posts.filter(post => {
+        const updatedPosts = _posts.filter(post => {
             return post.id !== postID
         })
-        posts = updatedPosts
+        _posts = updatedPosts
     }
 
     const addComment = function(postID, text){
-        const post = posts.find(p => p.id ===postID)
+        const post = _posts.find(p => p.id ===postID)
         if (!post) {
             const error = new Error("no such post with this id") 
             error.code = "NONEXISTING_POST";  
             throw error 
         }
         const newComment = {
-            id:`c${++commentIdCounter}`,
+            id:`c${++_commentIdCounter}`,
             text:text
         }
         post.comments.push(newComment)
     }
 
     const removeComment = function(postID, commentID){
-        const post = posts.find(p => p.id === postID)
+        const post = _posts.find(p => p.id === postID)
         if (!post) {
             const error = new Error("no such post with this id") 
             error.code = "NONEXISTING_POST";  
