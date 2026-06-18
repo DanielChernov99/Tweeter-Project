@@ -3,3 +3,50 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    padding: 2rem;
+    font-family: comicsans, cursive, sans-serif;
+    background-color: #f5f8fa;
+}
+button{
+    font-family: comicsans, cursive, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+h1{
+    margin-bottom: 2rem;
+}
+
+
+
+.tweet-row{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 2rem;
+}
+
+.tweet-row input{
+    flex: 5;
+    padding: 0.8rem;
+}
+.tweet-row button{
+    padding: 0.8rem 1.5rem;
+    background-color: #1DA1F2;
+    border: none;
+    cursor: pointer;
+    flex:1
+}
+.main-button {
+    padding: 0.8rem 4rem;
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 1rem;
+    gap: 1rem;
+}
