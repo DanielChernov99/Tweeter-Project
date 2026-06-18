@@ -5,7 +5,7 @@ const Renderer = function () {
         const deleteButton = document.createElement("button")
 
         deleteButton.textContent = "Delete Post"
-        deleteButton.classList.add("delete-button")
+        deleteButton.classList.add("delete-post-button")
         deleteButton.dataset.id = postId
 
         return deleteButton
@@ -13,12 +13,12 @@ const Renderer = function () {
 
     const createCommentElement = function(comment) {
         const commentContainer = document.createElement("div")
-        commentContainer.classList.add("comment")
+        commentContainer.classList.add("comment-container")
         commentContainer.dataset.id = comment.id
 
         const deleteCommentButton = document.createElement("button")
         deleteCommentButton.textContent = "X"
-        deleteCommentButton.classList.add("delete-comment")
+        deleteCommentButton.classList.add("delete-comment-button")
         deleteCommentButton.dataset.id = comment.id
 
         const commentText = document.createElement("span")
@@ -50,7 +50,7 @@ const Renderer = function () {
 
         const btnComment = document.createElement("button")
         btnComment.textContent = "Comment"
-        btnComment.classList.add("comment-button")
+        btnComment.classList.add("add-comment-button")
 
         commentRow.append(inputComment, btnComment)
         return commentRow
@@ -65,15 +65,15 @@ const Renderer = function () {
         postText.classList.add("post-text")
         postText.textContent = post.text
 
-        const deletePostButton = createDeletePostButton(post.id)
         const commentsDiv = createCommentsDiv(post.comments)
         const commentInputRow = createCommentInputRow()
+        const deletePostButton = createDeletePostButton(post.id)
 
         postElement.append(
             postText,
-            deletePostButton,
             commentsDiv,
-            commentInputRow
+            commentInputRow,
+            deletePostButton
         )
 
         return postElement
