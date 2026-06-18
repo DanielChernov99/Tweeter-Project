@@ -6,6 +6,22 @@ const Renderer = function () {
     }
 
     const createCommentElement = function(comment) {
+        const commentContainer = document.createElement("div")
+        commentContainer.classList.add("comment")
+        commentContainer.dataset.id = comment.id
+
+        const deleteCommentButton = document.createElement("button")
+        deleteCommentButton.textContent = "X"
+        deleteCommentButton.classList.add("delete-comment")
+        deleteCommentButton.dataset.id = comment.id
+
+        const commentText = document.createElement("span")
+        commentText.textContent = comment.text
+        commentText.classList.add("comment-text")
+
+        commentContainer.append(deleteCommentButton, commentText)
+
+        return commentContainer
     }
 
     const createCommentsDiv = function(comments) {
@@ -20,7 +36,7 @@ const Renderer = function () {
 
     const createCommentInputRow = function() {
         const commentRow = document.createElement("div")
-        commentRow.classList.add("comment-row")
+        commentRow.classList.add("comment-input-row")
 
         const inputComment = document.createElement("input")
         inputComment.placeholder = "Got something to say?"
